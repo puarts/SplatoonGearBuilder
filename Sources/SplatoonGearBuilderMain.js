@@ -114,6 +114,11 @@ const SpecialId = {
     Trizooka: _tmpSpecialId++,
     Wave_Breaker: _tmpSpecialId++,
     Zipcaster: _tmpSpecialId++,
+    Tenta_Missiles: _tmpSpecialId++,
+    Booyah_Bomb: _tmpSpecialId++,
+    Inkjet: _tmpSpecialId++,
+    Ink_Storm: _tmpSpecialId++,
+    Ultra_Stamp: _tmpSpecialId++,
 };
 
 const GearPowerId = {
@@ -137,20 +142,87 @@ const GearType = {
 // ============================
 
 const MainWeaponNames = {}
+
+// シューター
 MainWeaponNames[MainWeaponId.SplattershotJr] = "わかばシューター";
-MainWeaponNames[MainWeaponId.HeroShotReplica] = "ヒーローシューター";
+MainWeaponNames[MainWeaponId.HeroShotReplica] = "ヒーローシューターレプリカ";
 MainWeaponNames[MainWeaponId.Splattershot] = "スプラシューター";
 MainWeaponNames[MainWeaponId.AerosprayMG] = "プロモデラーMG";
-MainWeaponNames[MainWeaponId.NZAP85] = "N-ZAP 85";
+MainWeaponNames[MainWeaponId.NZAP85] = "N-ZAP85";
 MainWeaponNames[MainWeaponId.SplattershotPro] = "プライムシューター";
 MainWeaponNames[MainWeaponId.SplooshOMatic] = "ボールドマーカー";
-MainWeaponNames[MainWeaponId.dot52Gal] = ".52ガロン";
+MainWeaponNames[MainWeaponId.dot52Gal] = "52ガロン";
 MainWeaponNames[MainWeaponId.L3Nozzlenose] = "L3リールガン";
 MainWeaponNames[MainWeaponId.JetSquelcher] = "ジェットスイーパー";
 MainWeaponNames[MainWeaponId.SplashOMatic] = "シャープマーカー";
-MainWeaponNames[MainWeaponId.dot96Gal] = ".96ガロン";
+MainWeaponNames[MainWeaponId.dot96Gal] = "96ガロン";
 MainWeaponNames[MainWeaponId.Squeezer] = "ボールドマーカー";
 MainWeaponNames[MainWeaponId.H3Nozzlenose] = "H3リールガン";
+MainWeaponNames[MainWeaponId.Squeezer] = "ボトルガイザー";
+
+// マニューバー
+MainWeaponNames[MainWeaponId.DappleDualies] = "スパッタリー";
+MainWeaponNames[MainWeaponId.SplatDualies] = "スプラマニューバー";
+MainWeaponNames[MainWeaponId.DualieSquelchers] = "デュアルスイーパー";
+MainWeaponNames[MainWeaponId.DarkTetraDualies] = "クアッドホッパーブラック";
+MainWeaponNames[MainWeaponId.GloogaDualies] = "ケルビン525";
+
+// チャージャー
+MainWeaponNames[MainWeaponId.Eliter4K] = "リッター4K";
+MainWeaponNames[MainWeaponId.Eliter4KScope] = "4Kスコープ";
+MainWeaponNames[MainWeaponId.ClassicSquiffer] = "スクイックリンα";
+MainWeaponNames[MainWeaponId.GooTuber] = "ソイチューバー";
+MainWeaponNames[MainWeaponId.Bamboozler14MK1] = "14式竹筒銃・甲";
+MainWeaponNames[MainWeaponId.SplatCharger] = "スプラチャージャー";
+MainWeaponNames[MainWeaponId.Splatterscope] = "スプラスコープ";
+
+// ブラスター
+MainWeaponNames[MainWeaponId.Blaster] = "ホットブラスター";
+MainWeaponNames[MainWeaponId.ClashBlaster] = "クラッシュブラスター";
+MainWeaponNames[MainWeaponId.LunaBlaster] = "ノヴァブラスター";
+MainWeaponNames[MainWeaponId.RangeBlaster] = "ロングブラスター";
+MainWeaponNames[MainWeaponId.RapidBlaster] = "ラピッドブラスター";
+MainWeaponNames[MainWeaponId.RapidBlasterPro] = "Rブラスターエリート";
+
+// ローラー
+MainWeaponNames[MainWeaponId.CarbonRoller] = "カーボンローラー";
+MainWeaponNames[MainWeaponId.DynamoRoller] = "ダイナモローラー";
+MainWeaponNames[MainWeaponId.FlingzaRoller] = "ヴァリアブルローラー";
+MainWeaponNames[MainWeaponId.SplatRoller] = "スプラローラー";
+
+// ブラシ
+MainWeaponNames[MainWeaponId.Inkbrush] = "パブロ";
+MainWeaponNames[MainWeaponId.Octobrush] = "ホクサイ";
+
+// カサ
+MainWeaponNames[MainWeaponId.SplatBrella] = "パラシェルター";
+MainWeaponNames[MainWeaponId.TentaBrella] = "キャンピングシェルター";
+MainWeaponNames[MainWeaponId.UndercoverBrella] = "スパイガジェット";
+
+// スピナー
+MainWeaponNames[MainWeaponId.BallpointSplatling] = "クーゲルシュライバー";
+MainWeaponNames[MainWeaponId.HeavySplatling] = "バレルスピナー";
+MainWeaponNames[MainWeaponId.HydraSplatling] = "ハイドラント";
+MainWeaponNames[MainWeaponId.MiniSplatling] = "スプラスピナー";
+MainWeaponNames[MainWeaponId.Nautilus47] = "ノーチラス47";
+
+// スロッシャー
+MainWeaponNames[MainWeaponId.Bloblobber] = "オーバーフロッシャー";
+MainWeaponNames[MainWeaponId.Explosher] = "エクスプロッシャー";
+MainWeaponNames[MainWeaponId.Slosher] = "バケットスロッシャー";
+MainWeaponNames[MainWeaponId.TriSlosher] = "ヒッセン";
+MainWeaponNames[MainWeaponId.SloshingMachine] = "スクリュースロッシャー";
+
+// ワイパー
+MainWeaponNames[MainWeaponId.SplatanaStamper] = "ジムワイパー";
+MainWeaponNames[MainWeaponId.SplatanaWiper] = "ドライブワイパー";
+
+// ストリンガー
+MainWeaponNames[MainWeaponId.REEFLUX450] = "LACT-450";
+MainWeaponNames[MainWeaponId.TriStringer] = "トライストリンガー";
+
+
+
 
 const GearPowerNames = {}
 GearPowerNames[GearPowerId.None] = "なし";
@@ -255,7 +327,6 @@ MainWeaponThumbNames[MainWeaponId.UndercoverBrella] = "128px-S3_Weapon_Main_Unde
 
 const SubWeaponThumbNames = {}
 SubWeaponThumbNames[SubWeaponId.SplatBomb] = "SplatBomb.png"
-SubWeaponThumbNames[SubWeaponId.SplatBomb] = "SplatBomb.png"
 SubWeaponThumbNames[SubWeaponId.AngleShooter] = "AngleShooter.png"
 SubWeaponThumbNames[SubWeaponId.ToxicMist] = "ToxicMist.png"
 SubWeaponThumbNames[SubWeaponId.Torpedo] = "Torpedo.png"
@@ -270,6 +341,7 @@ SubWeaponThumbNames[SubWeaponId.FizzyBomb] = "FizzyBomb.png"
 SubWeaponThumbNames[SubWeaponId.CurlingBomb] = "CurlingBomb.png"
 SubWeaponThumbNames[SubWeaponId.BurstBomb] = "BurstBomb.png"
 SubWeaponThumbNames[SubWeaponId.Autobomb] = "Autobomb.png"
+
 const SpecialThumbNames = {}
 SpecialThumbNames[SpecialId.Big_Bubbler] = "64px-S3_Weapon_Special_Big_Bubbler.png"
 SpecialThumbNames[SpecialId.Crab_Tank] = "64px-S3_Weapon_Special_Crab_Tank.png"
@@ -281,7 +353,11 @@ SpecialThumbNames[SpecialId.Triple_Inkstrike] = "64px-S3_Weapon_Special_Triple_I
 SpecialThumbNames[SpecialId.Trizooka] = "64px-S3_Weapon_Special_Trizooka.png"
 SpecialThumbNames[SpecialId.Wave_Breaker] = "64px-S3_Weapon_Special_Wave_Breaker.png"
 SpecialThumbNames[SpecialId.Zipcaster] = "64px-S3_Weapon_Special_Zipcaster.png"
-
+SpecialThumbNames[SpecialId.Tenta_Missiles] = "64px-S3_Weapon_Special_Tenta_Missiles.png"
+SpecialThumbNames[SpecialId.Booyah_Bomb] = "64px-S3_Weapon_Special_Booyah_Bomb.png"
+SpecialThumbNames[SpecialId.Inkjet] = "64px-S3_Weapon_Special_Inkjet.png"
+SpecialThumbNames[SpecialId.Ink_Storm] = "64px-S3_Weapon_Special_Ink_Storm.png"
+SpecialThumbNames[SpecialId.Ultra_Stamp] = "64px-S3_Weapon_Special_Ultra_Stamp.png"
 
 
 function __getThumbPathImpl(fileName, dirName) {
@@ -312,62 +388,84 @@ function getSpecialThumbPath(id) {
 // ============================
 
 const MainWeaponToSubWeaponAndSpecials = {}
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplattershotJr] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
 
+// シューター
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplattershotJr] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
 MainWeaponToSubWeaponAndSpecials[MainWeaponId.HeroShotReplica] = [SubWeaponId.SuctionBomb, SpecialId.Trizooka]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.dot52Gal] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.dot96Gal] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.AerosprayMG] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplattershotPro] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Splattershot] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplooshOMatic] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.BallpointSplatling] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Bamboozler14MK1] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Blaster] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Bloblobber] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.CarbonRoller] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.ClashBlaster] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.ClassicSquiffer] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.DappleDualies] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.DarkTetraDualies] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.DualieSquelchers] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.DynamoRoller] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Eliter4KScope] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Eliter4K] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Explosher] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.FlingzaRoller] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.GloogaDualies] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.GooTuber] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.H3Nozzlenose] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.HeavySplatling] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.HydraSplatling] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Inkbrush] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.JetSquelcher] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.L3Nozzlenose] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.LunaBlaster] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.MiniSplatling] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.NZAP85] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Nautilus47] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Octobrush] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.RangeBlaster] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.RapidBlasterPro] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.RapidBlaster] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.REEFLUX450] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Slosher] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SloshingMachine] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplashOMatic] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatBrella] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatCharger] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatDualies] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatRoller] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatanaStamper] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatanaWiper] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Splatterscope] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.Squeezer] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.TentaBrella] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.TriSlosher] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.TriStringer] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
-MainWeaponToSubWeaponAndSpecials[MainWeaponId.UndercoverBrella] = [SubWeaponId.SplatBomb, SpecialId.Big_Bubbler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.dot52Gal] = [SubWeaponId.SplashWall, SpecialId.Killer_Wail_5_1]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.dot96Gal] = [SubWeaponId.Sprinkler, SpecialId.Ink_Vac]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.AerosprayMG] = [SubWeaponId.FizzyBomb, SpecialId.Reefslider]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.NZAP85] = [SubWeaponId.SuctionBomb, SpecialId.Tacticooler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.H3Nozzlenose] = [SubWeaponId.PointSensor, SpecialId.Tacticooler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.L3Nozzlenose] = [SubWeaponId.CurlingBomb, SpecialId.Crab_Tank]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Squeezer] = [SubWeaponId.SplashWall, SpecialId.Trizooka]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.JetSquelcher] = [SubWeaponId.AngleShooter, SpecialId.Ink_Vac]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Splattershot] = [SubWeaponId.SuctionBomb, SpecialId.Trizooka]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplattershotPro] = [SubWeaponId.AngleShooter, SpecialId.Crab_Tank]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplooshOMatic] = [SubWeaponId.CurlingBomb, SpecialId.Ultra_Stamp]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplashOMatic] = [SubWeaponId.BurstBomb, SpecialId.Crab_Tank]
+
+// マニューバ
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.DappleDualies] = [SubWeaponId.SquidBeakon, SpecialId.Tacticooler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatDualies] = [SubWeaponId.SuctionBomb, SpecialId.Crab_Tank]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.DualieSquelchers] = [SubWeaponId.SplatBomb, SpecialId.Wave_Breaker]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.DarkTetraDualies] = [SubWeaponId.Autobomb, SpecialId.Reefslider]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.GloogaDualies] = [SubWeaponId.SplashWall, SpecialId.Booyah_Bomb]
+
+// チャージャー
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Eliter4K] = [SubWeaponId.InkMine, SpecialId.Wave_Breaker]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Eliter4KScope] = [SubWeaponId.InkMine, SpecialId.Wave_Breaker]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.ClassicSquiffer] = [SubWeaponId.PointSensor, SpecialId.Big_Bubbler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.GooTuber] = [SubWeaponId.Torpedo, SpecialId.Tenta_Missiles]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Bamboozler14MK1] = [SubWeaponId.Autobomb, SpecialId.Killer_Wail_5_1]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatCharger] = [SubWeaponId.SplatBomb, SpecialId.Ink_Vac]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Splatterscope] = [SubWeaponId.SplatBomb, SpecialId.Ink_Vac]
+
+// ブラスター
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Blaster] = [SubWeaponId.Autobomb, SpecialId.Big_Bubbler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.ClashBlaster] = [SubWeaponId.SplatBomb, SpecialId.Trizooka]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.LunaBlaster] = [SubWeaponId.SplatBomb, SpecialId.Zipcaster]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.RangeBlaster] = [SubWeaponId.SuctionBomb, SpecialId.Wave_Breaker]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.RapidBlaster] = [SubWeaponId.InkMine, SpecialId.Triple_Inkstrike]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.RapidBlasterPro] = [SubWeaponId.ToxicMist, SpecialId.Ink_Vac]
+
+// ローラー
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.CarbonRoller] = [SubWeaponId.Autobomb, SpecialId.Zipcaster]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.DynamoRoller] = [SubWeaponId.Sprinkler, SpecialId.Tacticooler]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.FlingzaRoller] = [SubWeaponId.InkMine, SpecialId.Tenta_Missiles]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatRoller] = [SubWeaponId.CurlingBomb, SpecialId.Big_Bubbler]
+
+// ブラシ
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Inkbrush] = [SubWeaponId.SplatBomb, SpecialId.Killer_Wail_5_1]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Octobrush] = [SubWeaponId.SuctionBomb, SpecialId.Zipcaster]
+
+// カサ
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatBrella] = [SubWeaponId.Sprinkler, SpecialId.Triple_Inkstrike]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.TentaBrella] = [SubWeaponId.SquidBeakon, SpecialId.Ink_Vac]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.UndercoverBrella] = [SubWeaponId.InkMine, SpecialId.Reefslider]
+
+// スピナー
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.BallpointSplatling] = [SubWeaponId.FizzyBomb, SpecialId.Inkjet]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.HeavySplatling] = [SubWeaponId.Sprinkler, SpecialId.Wave_Breaker]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.HydraSplatling] = [SubWeaponId.Autobomb, SpecialId.Booyah_Bomb]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.MiniSplatling] = [SubWeaponId.BurstBomb, SpecialId.Ultra_Stamp]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Nautilus47] = [SubWeaponId.PointSensor, SpecialId.Ink_Storm]
+
+// スロッシャー
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Bloblobber] = [SubWeaponId.Sprinkler, SpecialId.Ink_Storm]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Explosher] = [SubWeaponId.PointSensor, SpecialId.Ink_Storm]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.Slosher] = [SubWeaponId.SplatBomb, SpecialId.Triple_Inkstrike]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.TriSlosher] = [SubWeaponId.ToxicMist, SpecialId.Inkjet]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SloshingMachine] = [SubWeaponId.FizzyBomb, SpecialId.Booyah_Bomb]
+
+// ワイパー
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatanaStamper] = [SubWeaponId.BurstBomb, SpecialId.Zipcaster]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.SplatanaWiper] = [SubWeaponId.Torpedo, SpecialId.Ultra_Stamp]
+
+// ストリンガー
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.REEFLUX450] = [SubWeaponId.CurlingBomb, SpecialId.Tenta_Missiles]
+MainWeaponToSubWeaponAndSpecials[MainWeaponId.TriStringer] = [SubWeaponId.ToxicMist, SpecialId.Killer_Wail_5_1]
+
 
 // ============================
 // ツール本体
