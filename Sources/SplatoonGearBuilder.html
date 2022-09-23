@@ -1,23 +1,319 @@
 <html>
+
 <head>
     <title>スプラ3 ギアビルダー</title>
 </head>
+
 <body>
+    <style>
+        .circle {
+            border-radius: 50%;
+            background: black;
+            border: solid 1px #000;
 
-<div id="app">
 
-</div>
-    
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            display: inline-block;
+            box-sizing: border-box;
+            /*立体感を出す*/
+            box-shadow: 1px 2px 3px 0px rgba(255, 255, 255, 1) inset;
+        }
 
-<!-- select2 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
-    media="print" onload="this.media='all'">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        .weapon {
+            padding: 10px;
+            border-radius: 25%;
+            background: rgb(225, 225, 225);
+            border: solid 1px #000;
+        }
 
-<!-- vue.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+        .weaponSub {
+            padding: 5px;
+            margin-left: 10px;
+            border-radius: 30%;
+            background: black;
+            border: solid 1px #000;
+            width: 50px;
+        }
 
+        .emptySubGearPowerCircle {
+            display: inline-block;
+            border-radius: 50%;
+            background: #999;
+            border: solid 1px #666;
+            width: 40px;
+            height: 40px;
+        }
+
+        .gearFrame {
+            border-radius: 10px;
+            background-color: #ccc;
+            padding: 3px;
+            border: solid 1px #aaa;
+            margin: 3px;
+        }
+
+        .sectionTitle {
+            border-radius: 5px;
+            padding: 3px;
+            font-weight: bold;
+            border: solid 1px yellow;
+            font-size: 12px;
+            background-color: rgb(27, 27, 27);
+            color: white;
+            width: 60px;
+        }
+
+        .settingSectionTitle {
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            background-color: rgb(27, 27, 27);
+            border: solid 1px yellow;
+
+            color: white;
+            width: 150px;
+            text-align: center;
+        }
+
+        .topSelection {
+            float: left;
+            background-color: rgb(80, 80, 80);
+            width: fit-content;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        /* ========================== 
+                    select2用 
+         ========================== */
+        .select2-results__options {
+            font-size: 12px;
+        }
+
+        .select2-selection__rendered {
+            font-size: 12px;
+        }
+
+
+        /* ========================== 
+                    タブ用 
+         ========================== */
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tabs {
+            overflow: hidden;
+        }
+
+        .tabs li,
+        .tabs label {
+            float: left;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px;
+            width: 67px;
+            text-align: center;
+            /* border: 1px solid #ccc; */
+            cursor: pointer;
+            transition: .3s;
+            background-color: white;
+        }
+
+        .tabs li.active,
+        .tabs :checked+label {
+            background-color: #000;
+            border-color: #000;
+            border-style: none;
+            /* color: #fff; */
+            cursor: auto;
+        }
+
+        .contents {
+            overflow: hidden;
+            margin-top: -1px;
+        }
+
+        .contents li {
+            /* width: 320px; */
+            /* padding: 20px; */
+            /* border: 1px solid #ccc; */
+        }
+
+        .tabContent {
+            padding: 10px;
+            background-color: white;
+        }
+    </style>
+
+    <div>
+        <div id="app">
+            <fieldset class="topSelection">
+                <fieldset class="gearFrame" style="text-align:left;background-color: rgb(255, 165, 165);">
+                    <!-- <legend class="sectionTitle">
+                        <div style="text-align:center;">ブキ</div>
+                    </legend> -->
+                    <table align="center">
+                        <tr>
+                            <td rowspan="2">
+                                <img v-bind:src="getMainWeaponThumbPath(weapon.id)" class="weapon" width="108">
+                            </td>
+                            <td>
+                                <img v-bind:src="getSubWeaponThumbPath(weapon.subWeaponId)" class="weaponSub">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img v-bind:src="getSpecialThumbPath(weapon.specialId)" class="weaponSub"
+                                    style="filter: brightness(2)">
+                            </td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+
+                <gear-detail v-model="headGear"></gear-detail>
+                <gear-detail v-model="bodyGear"></gear-detail>
+                <gear-detail v-model="footGear"></gear-detail>
+            </fieldset>
+
+            <fieldset class="topSelection">
+                <legend class="settingSectionTitle">
+                    <div style="text-align:center;">設定</div>
+                </legend>
+                <div style="color:white;padding-bottom:10px">
+                    武器:
+                    <select2 :options="WeaponOptions" v-model="weapon.id"
+                        @input="g_appData.weapon.syncSubWeaponAndSpecial()">
+                    </select2>
+
+                </div>
+
+                <ul class="tabs" style="clear:both">
+                    <li v-for="(gear, index) in gears" v-on:click="currentGear = gear.id"
+                        v-bind:class="{'active': currentGear === gear.id}" v-bind:style="gear.additionalStyle">
+                        <span>{{gear.displayName}}</span>
+                    </li>
+                </ul>
+                <ul class="contents">
+                    <li v-for="(gear, index) in gears" v-if="currentGear === gear.id">
+                        <div class="tabContent" v-bind:style="gear.additionalStyle">
+                            <gear-input-detail v-model="gear"></gear-input-detail>
+                        </div>
+                    </li>
+                    <!-- <li v-if="currentGear === GearType.Body">
+                        <div class="tabContent" v-bind:style="bodyGear.additionalStyle">
+                            <gear-input-detail v-model="bodyGear"></gear-input-detail>
+                        </div>
+                    </li>
+                    <li v-if="currentGear === GearType.Foot">
+                        <div class="tabContent" v-bind:style="footGear.additionalStyle">
+                            <gear-input-detail v-model="footGear"></gear-input-detail>
+                        </div>
+                    </li> -->
+                </ul>
+            </fieldset>
+        </div>
+    </div>
+    <script type="text/x-template" id="gear-detail-template">
+        <fieldset class="gearFrame" v-bind:style="'text-align:left;' + value.additionalStyle">
+            <!-- <legend class="sectionTitle"><div style="text-align:center;">{{value.displayName}}</div></legend> -->
+            <img v-bind:src="getGearPowerThumbPath(value.mainPower)" class="circle" width="50">
+            <img v-bind:src="getGearPowerThumbPath(value.subPower1)" class="circle" width="40" v-if="value.subPower1 != GearPowerId.None">
+            <span class="emptySubGearPowerCircle" v-else></span>
+            <img v-bind:src="getGearPowerThumbPath(value.subPower2)" class="circle" width="40" v-if="value.subPower2 != GearPowerId.None">
+            <span class="emptySubGearPowerCircle" v-else></span>
+            <img v-bind:src="getGearPowerThumbPath(value.subPower3)" class="circle" width="40" v-if="value.subPower3 != GearPowerId.None">
+            <span class="emptySubGearPowerCircle" v-else></span>
+        </fieldset>
+    </script>
+    <script type="text/x-template" id="gear-input-detail-template">
+        <div>
+            <dl>
+                <dt>メイン:</dt>
+                <dd>
+                    <select2 :options="GearPowerOptions" v-model="value.mainPower"></select2>
+                </dd>
+                <dt>サブ:</dt>
+                <dd>
+                    <select2 :options="GearPowerOptions" v-model="value.subPower1"></select2>
+                    <br/>
+                    <select2 :options="GearPowerOptions" v-model="value.subPower2"></select2>
+                    <br/>
+                    <select2 :options="GearPowerOptions" v-model="value.subPower3"></select2>
+                </dd>
+            </dl>
+        </div>
+    </script>
+
+
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <!-- select2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
+        media="print" onload="this.media='all'">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+
+    <!-- vue.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+
+
+
+    <script>
+        function createScriptElement(src, onloadFunc) {
+            let element = document.createElement("script");
+            element.type = "text/javascript";
+            element.src = src;
+            element.onload = onloadFunc;
+            // document.body.appendChild(element);
+            let headElement = document.getElementsByTagName('head')[0];
+            headElement.appendChild(element);
+        }
+
+        function loadScripts(scriptFileNames, allScriptLoaded, index = 0) {
+            if (index == scriptFileNames.length) {
+                allScriptLoaded();
+                return;
+            }
+
+            let jsRootPath = "./";
+            // jsRootPath = "/AetherRaidTacticsBoard/Release2/";
+            let reloadSuffix = "20200513";
+            let scriptFileName = scriptFileNames[index];
+            let src = jsRootPath + scriptFileName + "?" + reloadSuffix;
+            const startTime = Date.now();
+            createScriptElement(src, x => {
+                const endTime = Date.now();
+                console.log(`${endTime - startTime} ms to load ${src}`);
+                loadScripts(scriptFileNames, allScriptLoaded, ++index);
+            });
+        }
+
+        window.addEventListener('load', (event) => {
+            const isLocal = typeof weaponInfos == 'undefined';
+            console.log(`isLocal=${isLocal}`);
+            let additionalScripts = [];
+            if (isLocal) {
+                additionalScripts = [
+                    "VueComponents.js",
+                    "SplatoonGearBuilderMain.js",
+                ];
+            }
+            const startTime = Date.now();
+            loadScripts(additionalScripts, () => {
+                const endTime = Date.now();
+                console.log(`${endTime - startTime} ms to load all scripts`);
+                console.log("initializing application");
+            });
+        });
+    </script>
 </body>
+
 </html>
