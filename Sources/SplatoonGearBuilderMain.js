@@ -121,14 +121,35 @@ const SpecialId = {
     Ultra_Stamp: _tmpSpecialId++,
 };
 
+let _tmpGearPowerId = 0;
 const GearPowerId = {
-    None: 0,
-    InkSaverMain: 1,
-    InkSaverSub: 2,
-    InkRecoveryUp: 3,
-    RunSpeedUp: 4,
-    SwimSpeedUp: 5,
-    SpecialChargeUp: 6,
+    None: _tmpGearPowerId++,
+    Ability_Doubler: _tmpGearPowerId++,
+    Comeback: _tmpGearPowerId++,
+    Drop_Roller: _tmpGearPowerId++,
+    Haunt: _tmpGearPowerId++,
+    Ink_Recovery_Up: _tmpGearPowerId++,
+    Ink_Resistance_Up: _tmpGearPowerId++,
+    Ink_Saver_Main: _tmpGearPowerId++,
+    Ink_Saver_Sub: _tmpGearPowerId++,
+    Intensify_Action: _tmpGearPowerId++,
+    LastDitch_Effort: _tmpGearPowerId++,
+    Ninja_Squid: _tmpGearPowerId++,
+    Object_Shredder: _tmpGearPowerId++,
+    Opening_Gambit: _tmpGearPowerId++,
+    Quick_Respawn: _tmpGearPowerId++,
+    Quick_Super_Jump: _tmpGearPowerId++,
+    Respawn_Punisher: _tmpGearPowerId++,
+    Run_Speed_Up: _tmpGearPowerId++,
+    Special_Charge_Up: _tmpGearPowerId++,
+    Special_Power_Up: _tmpGearPowerId++,
+    Special_Saver: _tmpGearPowerId++,
+    Stealth_Jump: _tmpGearPowerId++,
+    Sub_Power_Up: _tmpGearPowerId++,
+    Sub_Resistance_Up: _tmpGearPowerId++,
+    Swim_Speed_Up: _tmpGearPowerId++,
+    Tenacity: _tmpGearPowerId++,
+    Thermal_Ink: _tmpGearPowerId++,
 };
 
 const GearType = {
@@ -226,12 +247,34 @@ MainWeaponNames[MainWeaponId.TriStringer] = "トライストリンガー";
 
 const GearPowerNames = {}
 GearPowerNames[GearPowerId.None] = "なし";
-GearPowerNames[GearPowerId.InkSaverMain] = "メインインク効率アップ";
-GearPowerNames[GearPowerId.InkSaverSub] = "サブインク効率アップ";
-GearPowerNames[GearPowerId.InkRecoveryUp] = "インク回復アップ";
-GearPowerNames[GearPowerId.RunSpeedUp] = "歩く速度アップ";
-GearPowerNames[GearPowerId.SwimSpeedUp] = "イカ速度アップ";
-GearPowerNames[GearPowerId.SpecialChargeUp] = "スペシャル増加量アップ";
+GearPowerNames[GearPowerId.Ability_Doubler] = "追加ギアパワー倍化"
+GearPowerNames[GearPowerId.Comeback] = "カムバック"
+GearPowerNames[GearPowerId.Drop_Roller] = "受け身術"
+GearPowerNames[GearPowerId.Haunt] = "リベンジ"
+GearPowerNames[GearPowerId.Ink_Recovery_Up] = "インク回復力アップ"
+GearPowerNames[GearPowerId.Ink_Resistance_Up] = "相手インク影響軽減"
+GearPowerNames[GearPowerId.Ink_Saver_Main] = "インク効率アップ(メイン)"
+GearPowerNames[GearPowerId.Ink_Saver_Sub] = "インク効率アップ(サブ)"
+GearPowerNames[GearPowerId.Intensify_Action] = "アクション強化"
+GearPowerNames[GearPowerId.LastDitch_Effort] = "ラストスパート"
+GearPowerNames[GearPowerId.Ninja_Squid] = "イカニンジャ"
+GearPowerNames[GearPowerId.Object_Shredder] = "対物攻撃力アップ"
+GearPowerNames[GearPowerId.Opening_Gambit] = "スタートダッシュ"
+GearPowerNames[GearPowerId.Quick_Respawn] = "復活時間短縮"
+GearPowerNames[GearPowerId.Quick_Super_Jump] = "スーパージャンプ時間短縮"
+GearPowerNames[GearPowerId.Respawn_Punisher] = "復活ペナルティアップ"
+GearPowerNames[GearPowerId.Run_Speed_Up] = "ヒト移動速度アップ"
+GearPowerNames[GearPowerId.Special_Charge_Up] = "スペシャル増加量アップ"
+GearPowerNames[GearPowerId.Special_Power_Up] = "スペシャル性能アップ"
+GearPowerNames[GearPowerId.Special_Saver] = "スペシャル減少量ダウン"
+GearPowerNames[GearPowerId.Stealth_Jump] = "ステルスジャンプ"
+GearPowerNames[GearPowerId.Sub_Power_Up] = "サブ性能アップ"
+GearPowerNames[GearPowerId.Sub_Resistance_Up] = "サブ影響軽減"
+GearPowerNames[GearPowerId.Swim_Speed_Up] = "イカダッシュ速度アップ"
+GearPowerNames[GearPowerId.Tenacity] = "逆境強化"
+GearPowerNames[GearPowerId.Thermal_Ink] = "サーマルインク"
+
+
 
 const GearNames = {}
 GearNames[GearType.Head] = "アタマ";
@@ -257,12 +300,33 @@ const GearPowerOptions = __createSelect2Options(GearPowerNames);
 // サムネール画像
 // ============================
 const GearPowerThumbNames = {}
-GearPowerThumbNames[GearPowerId.InkSaverMain] = "48px-S3_Ability_Ink_Saver_(Main).png";
-GearPowerThumbNames[GearPowerId.InkSaverSub] = "48px-S3_Ability_Ink_Saver_(Sub).png";
-GearPowerThumbNames[GearPowerId.InkRecoveryUp] = "48px-S3_Ability_Ink_Recovery_Up.png";
-GearPowerThumbNames[GearPowerId.RunSpeedUp] = "48px-S3_Ability_Run_Speed_Up.png";
-GearPowerThumbNames[GearPowerId.SwimSpeedUp] = "48px-S3_Ability_Swim_Speed_Up.png";
-GearPowerThumbNames[GearPowerId.SpecialChargeUp] = "48px-S3_Ability_Special_Charge_Up.png";
+GearPowerThumbNames[GearPowerId.Ability_Doubler] = "48px-S3_Ability_Ability_Doubler.png"
+GearPowerThumbNames[GearPowerId.Comeback] = "48px-S3_Ability_Comeback.png"
+GearPowerThumbNames[GearPowerId.Drop_Roller] = "48px-S3_Ability_Drop_Roller.png"
+GearPowerThumbNames[GearPowerId.Haunt] = "48px-S3_Ability_Haunt.png"
+GearPowerThumbNames[GearPowerId.Ink_Recovery_Up] = "48px-S3_Ability_Ink_Recovery_Up.png"
+GearPowerThumbNames[GearPowerId.Ink_Resistance_Up] = "48px-S3_Ability_Ink_Resistance_Up.png"
+GearPowerThumbNames[GearPowerId.Ink_Saver_Main] = "48px-S3_Ability_Ink_Saver_(Main).png"
+GearPowerThumbNames[GearPowerId.Ink_Saver_Sub] = "48px-S3_Ability_Ink_Saver_(Sub).png"
+GearPowerThumbNames[GearPowerId.Intensify_Action] = "48px-S3_Ability_Intensify_Action.png"
+GearPowerThumbNames[GearPowerId.LastDitch_Effort] = "48px-S3_Ability_Last-Ditch_Effort.png"
+GearPowerThumbNames[GearPowerId.Ninja_Squid] = "48px-S3_Ability_Ninja_Squid.png"
+GearPowerThumbNames[GearPowerId.Object_Shredder] = "48px-S3_Ability_Object_Shredder.png"
+GearPowerThumbNames[GearPowerId.Opening_Gambit] = "48px-S3_Ability_Opening_Gambit.png"
+GearPowerThumbNames[GearPowerId.Quick_Respawn] = "48px-S3_Ability_Quick_Respawn.png"
+GearPowerThumbNames[GearPowerId.Quick_Super_Jump] = "48px-S3_Ability_Quick_Super_Jump.png"
+GearPowerThumbNames[GearPowerId.Respawn_Punisher] = "48px-S3_Ability_Respawn_Punisher.png"
+GearPowerThumbNames[GearPowerId.Run_Speed_Up] = "48px-S3_Ability_Run_Speed_Up.png"
+GearPowerThumbNames[GearPowerId.Special_Charge_Up] = "48px-S3_Ability_Special_Charge_Up.png"
+GearPowerThumbNames[GearPowerId.Special_Power_Up] = "48px-S3_Ability_Special_Power_Up.png"
+GearPowerThumbNames[GearPowerId.Special_Saver] = "48px-S3_Ability_Special_Saver.png"
+GearPowerThumbNames[GearPowerId.Stealth_Jump] = "48px-S3_Ability_Stealth_Jump.png"
+GearPowerThumbNames[GearPowerId.Sub_Power_Up] = "48px-S3_Ability_Sub_Power_Up.png"
+GearPowerThumbNames[GearPowerId.Sub_Resistance_Up] = "48px-S3_Ability_Sub_Resistance_Up.png"
+GearPowerThumbNames[GearPowerId.Swim_Speed_Up] = "48px-S3_Ability_Swim_Speed_Up.png"
+GearPowerThumbNames[GearPowerId.Tenacity] = "48px-S3_Ability_Tenacity.png"
+GearPowerThumbNames[GearPowerId.Thermal_Ink] = "48px-S3_Ability_Thermal_Ink.png"
+
 
 
 const MainWeaponThumbNames = {}
@@ -489,7 +553,7 @@ class Gear {
     constructor(id, additionalStyle) {
         this.id = id;
         this.displayName = GearNames[id];
-        this.mainPower = GearPowerId.InkSaverMain;
+        this.mainPower = GearPowerId.Ink_Saver_Main;
         this.subPower1 = GearPowerId.None;
         this.subPower2 = GearPowerId.None;
         this.subPower3 = GearPowerId.None;

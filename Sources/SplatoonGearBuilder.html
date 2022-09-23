@@ -164,14 +164,13 @@
                                 <img v-bind:src="getMainWeaponThumbPath(weapon.id)" class="weapon" width="108">
                             </td>
                             <td>
-                                <img v-bind:src="getSubWeaponThumbPath(weapon.subWeaponId)" class="weaponSub"
-                                    style="filter: brightness(1.3)">
+                                <img v-bind:src="getSubWeaponThumbPath(weapon.subWeaponId)" class="weaponSub">
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <img v-bind:src="getSpecialThumbPath(weapon.specialId)" class="weaponSub"
-                                    style="filter: brightness(2)">
+                                    style="filter: brightness(1.5)">
                             </td>
                         </tr>
                     </table>
@@ -235,20 +234,26 @@
     </script>
     <script type="text/x-template" id="gear-input-detail-template">
         <div>
-            <dl>
-                <dt>メイン:</dt>
-                <dd>
+                メイン:<br/>
+                <div style="padding:5px;">
+                    <img v-bind:src="getGearPowerThumbPath(value.mainPower)" class="circle" width="30" style="vertical-align:middle" >
                     <select2 :options="GearPowerOptions" v-model="value.mainPower"></select2>
-                </dd>
-                <dt>サブ:</dt>
-                <dd>
+                </div>
+                <div style="clear:both"></div>
+                <div style="padding:5px;">
+                サブ:<br/>
+                    <img v-bind:src="getGearPowerThumbPath(value.subPower1)" class="circle" width="30" style="vertical-align:middle" v-if="value.subPower1 != GearPowerId.None" >
+                    <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
                     <select2 :options="GearPowerOptions" v-model="value.subPower1"></select2>
                     <br/>
+                    <img v-bind:src="getGearPowerThumbPath(value.subPower2)" class="circle" width="30" style="vertical-align:middle" v-if="value.subPower2 != GearPowerId.None" >
+                    <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
                     <select2 :options="GearPowerOptions" v-model="value.subPower2"></select2>
                     <br/>
+                    <img v-bind:src="getGearPowerThumbPath(value.subPower3)" class="circle" width="30" style="vertical-align:middle" v-if="value.subPower3 != GearPowerId.None" >
+                    <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
                     <select2 :options="GearPowerOptions" v-model="value.subPower3"></select2>
-                </dd>
-            </dl>
+                </div>
         </div>
     </script>
 
