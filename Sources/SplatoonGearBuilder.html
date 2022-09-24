@@ -11,7 +11,7 @@
             background: black;
             border: solid 1px #000;
 
-
+            vertical-align: auto;
             display: inline-block;
             box-sizing: border-box;
             /*立体感を出す*/
@@ -214,17 +214,15 @@
         </div>
     </div>
     <script type="text/x-template" id="gear-detail-template">
-        <fieldset class="gearFrame" v-bind:style="'text-align:center;' + value.additionalStyle">
-            <div height="42">
-                <!-- <legend class="sectionTitle"><div style="text-align:center;">{{value.displayName}}</div></legend> -->
-                <img v-bind:src="getGearPowerThumbPath(value.mainPower)" class="circle" width="50">
-                <img v-bind:src="getGearPowerThumbPath(value.subPower1)" class="circle" width="40" v-if="value.subPower1 != GearPowerId.None">
-                <span class="emptySubGearPowerCircle" v-else></span>
-                <img v-bind:src="getGearPowerThumbPath(value.subPower2)" class="circle" width="40" v-if="value.subPower2 != GearPowerId.None">
-                <span class="emptySubGearPowerCircle" v-else></span>
-                <img v-bind:src="getGearPowerThumbPath(value.subPower3)" class="circle" width="40" v-if="value.subPower3 != GearPowerId.None">
-                <span class="emptySubGearPowerCircle" v-else></span>
-            </div>
+        <fieldset class="gearFrame" v-bind:style="'height:52px;text-align:center;' + value.additionalStyle">
+            <!-- <legend class="sectionTitle"><div style="text-align:center;">{{value.displayName}}</div></legend> -->
+            <img v-bind:src="getGearPowerThumbPath(value.mainPower)" class="circle" width="50">
+            <img v-bind:src="getGearPowerThumbPath(value.subPower1)" class="circle" width="40" v-if="value.subPower1 != GearPowerId.None">
+            <span class="emptySubGearPowerCircle" v-else></span>
+            <img v-bind:src="getGearPowerThumbPath(value.subPower2)" class="circle" width="40" v-if="value.subPower2 != GearPowerId.None">
+            <span class="emptySubGearPowerCircle" v-else></span>
+            <img v-bind:src="getGearPowerThumbPath(value.subPower3)" class="circle" width="40" v-if="value.subPower3 != GearPowerId.None">
+            <span class="emptySubGearPowerCircle" v-else></span>
         </fieldset>
     </script>
     <script type="text/x-template" id="gear-input-detail-template">
