@@ -209,16 +209,6 @@
                             <gear-input-detail v-model="gear"></gear-input-detail>
                         </div>
                     </li>
-                    <!-- <li v-if="currentGear === GearType.Body">
-                        <div class="tabContent" v-bind:style="bodyGear.additionalStyle">
-                            <gear-input-detail v-model="bodyGear"></gear-input-detail>
-                        </div>
-                    </li>
-                    <li v-if="currentGear === GearType.Foot">
-                        <div class="tabContent" v-bind:style="footGear.additionalStyle">
-                            <gear-input-detail v-model="footGear"></gear-input-detail>
-                        </div>
-                    </li> -->
                 </ul>
             </fieldset>
         </div>
@@ -309,16 +299,25 @@
             });
         }
 
+        let g_isLocal = true; // サーバー上ではfalseに書き換える
         window.addEventListener('load', (event) => {
-            const isLocal = typeof weaponInfos == 'undefined';
-            console.log(`isLocal=${isLocal}`);
+            console.log(`isLocal=${g_isLocal}`);
             let additionalScripts = [];
-            if (isLocal) {
+            if (g_isLocal) {
                 additionalScripts = [
+                    "GlobalDefinitions_Debug.js",
                     "VueComponents.js",
                     "SplatoonGearBuilderMain.js",
                 ];
             }
+            else {
+                additionalScripts = [
+                    "GlobalDefinitions.js",
+                    "VueComponents.js",
+                    "SplatoonGearBuilderMain.js",
+                ];
+            }
+
             const startTime = Date.now();
             loadScripts(additionalScripts, () => {
                 const endTime = Date.now();
