@@ -214,7 +214,7 @@
         </div>
     </div>
     <script type="text/x-template" id="gear-detail-template">
-        <fieldset class="gearFrame" v-bind:style="'text-align:center;' + value.additionalStyle">
+        <fieldset class="gearFrame" v-bind:style="'height:52px;text-align:center;' + value.additionalStyle">
             <!-- <legend class="sectionTitle"><div style="text-align:center;">{{value.displayName}}</div></legend> -->
             <img v-bind:src="getGearPowerThumbPath(value.mainPower)" class="circle" width="50">
             <img v-bind:src="getGearPowerThumbPath(value.subPower1)" class="circle" width="40" v-if="value.subPower1 != GearPowerId.None">
