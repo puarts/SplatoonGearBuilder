@@ -280,6 +280,8 @@
             headElement.appendChild(element);
         }
 
+        let g_isLocal = true; // サーバー上ではfalseに書き換える
+
         function loadScripts(scriptFileNames, allScriptLoaded, index = 0) {
             if (index == scriptFileNames.length) {
                 allScriptLoaded();
@@ -287,7 +289,9 @@
             }
 
             let jsRootPath = "./";
-            // jsRootPath = "/AetherRaidTacticsBoard/Release2/";
+            if (!g_isLocal) {
+                jsRootPath = "/SplatoonGearBuilder/Sources/";
+            }
             let reloadSuffix = "20200513";
             let scriptFileName = scriptFileNames[index];
             let src = jsRootPath + scriptFileName + "?" + reloadSuffix;
@@ -299,7 +303,6 @@
             });
         }
 
-        let g_isLocal = true; // サーバー上ではfalseに書き換える
         window.addEventListener('load', (event) => {
             console.log(`isLocal=${g_isLocal}`);
             let additionalScripts = [];
