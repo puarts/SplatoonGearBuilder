@@ -613,6 +613,12 @@ class Gear {
         this.subPower3 = GearPowerId.None;
         this.additionalStyle = additionalStyle;
     }
+
+    clearSubPowers() {
+        this.subPower1 = GearPowerId.None;
+        this.subPower2 = GearPowerId.None;
+        this.subPower3 = GearPowerId.None;
+    }
 }
 
 class SplatoonGearBuilderMain {
@@ -623,7 +629,16 @@ class SplatoonGearBuilderMain {
         this.footGear = new Gear(GearType.Foot, FootMainGearPowerOptions, "background-color:rgb(206, 174, 255)");
 
         this.gears = [this.headGear, this.bodyGear, this.footGear];
+        this.gearIdToGearDict = {};
+        this.gearIdToGearDict[GearType.Head] = this.headGear;
+        this.gearIdToGearDict[GearType.Body] = this.bodyGear;
+        this.gearIdToGearDict[GearType.Foot] = this.footGear;
         this.currentGear = GearType.Head;
+    }
+
+    clearSubGearPowers() {
+        let gear = this.gearIdToGearDict[this.currentGear];
+        gear.clearSubPowers();
     }
 }
 

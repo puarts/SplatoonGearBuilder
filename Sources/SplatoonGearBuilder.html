@@ -250,6 +250,9 @@
                         <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
                         <select2 :options="GearPowerOptions" v-model="value.subPower3" class="gearPowerSelect"></select2>
                     </div>
+                    <div style="clear:both; margin-top:10px;text-align:right;">
+                        <input type="button" value="サブをクリア" @click="g_appData.clearSubGearPowers()" >
+                    </div>
                 </div>
         </div>
     </script>
