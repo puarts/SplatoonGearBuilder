@@ -152,6 +152,48 @@ const GearPowerId = {
     Thermal_Ink: _tmpGearPowerId++,
 };
 
+const HeadOnlyGearPowers = [
+    GearPowerId.Comeback,
+    GearPowerId.LastDitch_Effort,
+    GearPowerId.Opening_Gambit,
+    GearPowerId.Tenacity,
+];
+
+const BodyOnlyGearPowers = [
+    GearPowerId.Ability_Doubler,
+    GearPowerId.Haunt,
+    GearPowerId.Ninja_Squid,
+    GearPowerId.Respawn_Punisher,
+    GearPowerId.Thermal_Ink,
+];
+
+const FootOnlyGearPowers = [
+    GearPowerId.Drop_Roller,
+    GearPowerId.Object_Shredder,
+    GearPowerId.Stealth_Jump,
+];
+
+function __getSubGearPowers() {
+    let result = [];
+    for (let key in GearPowerId) {
+        let id = GearPowerId[key];
+        if (FootOnlyGearPowers.some(x => x === id)
+            || BodyOnlyGearPowers.some(x => x === id)
+            || HeadOnlyGearPowers.some(x => x === id)
+        ) {
+            continue;
+        }
+
+        result.push(id);
+    }
+    return result;
+}
+
+const SubGearPowers = __getSubGearPowers();
+const HeadMainGearPowers = HeadOnlyGearPowers.concat(SubGearPowers);
+const BodyMainGearPowers = BodyOnlyGearPowers.concat(SubGearPowers);
+const FootMainGearPowers = FootOnlyGearPowers.concat(SubGearPowers);
+
 const GearType = {
     Head: 0,
     Body: 1,
@@ -293,7 +335,19 @@ function __createSelect2Options(dict) {
     return result;
 }
 const WeaponOptions = __createSelect2Options(MainWeaponNames);
-const GearPowerOptions = __createSelect2Options(GearPowerNames);
+
+function __createSelect2OptionsFromIdList(ids, idToNameDict) {
+    let result = [];
+    for (let id of ids) {
+        result.push({ id: id, text: idToNameDict[id] });
+    }
+    return result;
+}
+
+const GearPowerOptions = __createSelect2OptionsFromIdList(SubGearPowers, GearPowerNames);
+const HeadMainGearPowerOptions = __createSelect2OptionsFromIdList(HeadMainGearPowers, GearPowerNames);
+const BodyMainGearPowerOptions = __createSelect2OptionsFromIdList(BodyMainGearPowers, GearPowerNames);
+const FootMainGearPowerOptions = __createSelect2OptionsFromIdList(FootMainGearPowers, GearPowerNames);
 
 
 // ============================
@@ -550,10 +604,11 @@ class Weapon {
 }
 
 class Gear {
-    constructor(id, additionalStyle) {
+    constructor(id, mainGearPowerOptions, additionalStyle) {
         this.id = id;
         this.displayName = GearNames[id];
         this.mainPower = GearPowerId.Ink_Saver_Main;
+        this.mainGearPowerOptions = mainGearPowerOptions;
         this.subPower1 = GearPowerId.None;
         this.subPower2 = GearPowerId.None;
         this.subPower3 = GearPowerId.None;
@@ -564,9 +619,9 @@ class Gear {
 class SplatoonGearBuilderMain {
     constructor() {
         this.weapon = new Weapon();
-        this.headGear = new Gear(GearType.Head, "background-color:rgb(125, 168, 255)");
-        this.bodyGear = new Gear(GearType.Body, "background-color:rgb(120, 248, 225)");
-        this.footGear = new Gear(GearType.Foot, "background-color:rgb(206, 174, 255)");
+        this.headGear = new Gear(GearType.Head, HeadMainGearPowerOptions, "background-color:rgb(125, 168, 255)");
+        this.bodyGear = new Gear(GearType.Body, BodyMainGearPowerOptions, "background-color:rgb(120, 248, 225)");
+        this.footGear = new Gear(GearType.Foot, FootMainGearPowerOptions, "background-color:rgb(206, 174, 255)");
 
         this.gears = [this.headGear, this.bodyGear, this.footGear];
         this.currentGear = GearType.Head;
