@@ -84,7 +84,6 @@ const MainWeaponId = {
 };
 
 const SubWeaponId = {
-    SplatBomb: 0,
     AngleShooter: 1,
     ToxicMist: 2,
     Torpedo: 3,
@@ -218,7 +217,6 @@ MainWeaponNames[MainWeaponId.L3Nozzlenose] = "L3リールガン";
 MainWeaponNames[MainWeaponId.JetSquelcher] = "ジェットスイーパー";
 MainWeaponNames[MainWeaponId.SplashOMatic] = "シャープマーカー";
 MainWeaponNames[MainWeaponId.dot96Gal] = "96ガロン";
-MainWeaponNames[MainWeaponId.Squeezer] = "ボールドマーカー";
 MainWeaponNames[MainWeaponId.H3Nozzlenose] = "H3リールガン";
 MainWeaponNames[MainWeaponId.Squeezer] = "ボトルガイザー";
 
@@ -252,11 +250,11 @@ MainWeaponNames[MainWeaponId.DynamoRoller] = "ダイナモローラー";
 MainWeaponNames[MainWeaponId.FlingzaRoller] = "ヴァリアブルローラー";
 MainWeaponNames[MainWeaponId.SplatRoller] = "スプラローラー";
 
-// ブラシ
+// フデ
 MainWeaponNames[MainWeaponId.Inkbrush] = "パブロ";
 MainWeaponNames[MainWeaponId.Octobrush] = "ホクサイ";
 
-// カサ
+// シェルター
 MainWeaponNames[MainWeaponId.SplatBrella] = "パラシェルター";
 MainWeaponNames[MainWeaponId.TentaBrella] = "キャンピングシェルター";
 MainWeaponNames[MainWeaponId.UndercoverBrella] = "スパイガジェット";
