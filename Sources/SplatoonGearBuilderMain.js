@@ -667,6 +667,10 @@ class SplatoonGearBuilderMain {
             return;
         }
 
+        if (!SubGearPowers.some(x => x == power)) {
+            return;
+        }
+
         if (!(power in powerDict)) {
             powerDict[power] = 0;
         }
