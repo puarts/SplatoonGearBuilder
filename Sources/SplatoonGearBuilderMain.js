@@ -632,11 +632,45 @@ class SplatoonGearBuilderMain {
         this.gearIdToGearDict[GearType.Body] = this.bodyGear;
         this.gearIdToGearDict[GearType.Foot] = this.footGear;
         this.currentGear = GearType.Head;
+        this.showsGearPowerAmounts = false;
+        this.gearPowerAmounts = {};
+        this.updateGearPowerAmounts();
     }
 
     clearSubGearPowers() {
         let gear = this.gearIdToGearDict[this.currentGear];
         gear.clearSubPowers();
+    }
+
+    updateGearPowerAmounts() {
+        this.gearPowerAmounts = this.calcGearPowerAmount();
+        console.log(this.gearPowerAmounts);
+    }
+
+    calcGearPowerAmount() {
+        const powers = {}
+        for (let gear of this.gears) {
+            this.__addGearPower(powers, gear.mainPower, 1);
+            this.__addGearPower(powers, gear.subPower1, 0.3);
+            this.__addGearPower(powers, gear.subPower2, 0.3);
+            this.__addGearPower(powers, gear.subPower3, 0.3);
+        }
+        return powers;
+    }
+    /**
+     * @param  {{GearPowerId, number}} powerDict
+     * @param  {GearPowerId} power
+     * @param  {number} amount
+     */
+    __addGearPower(powerDict, power, amount) {
+        if (power == GearPowerId.None) {
+            return;
+        }
+
+        if (!(power in powerDict)) {
+            powerDict[power] = 0;
+        }
+        powerDict[power] += amount;
     }
 }
 

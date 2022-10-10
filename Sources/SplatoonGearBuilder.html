@@ -77,7 +77,8 @@
         .topSelection {
             float: left;
             background-color: rgb(80, 80, 80);
-            width: fit-content;
+            /* width: fit-content; */
+            width: 255px;
             padding: 10px;
             margin: 5px;
             border-radius: 10px;
@@ -156,6 +157,11 @@
 
     <div>
         <div id="app">
+            <div>
+                <input id="showsGearPowerAmounts" v-model="showsGearPowerAmounts" type="checkbox"><label
+                    for="showsGearPowerAmounts">パワーの数値表示</label>
+            </div>
+            <div style="clear:both"></div>
             <fieldset class="topSelection">
                 <fieldset class="gearFrame" style="text-align:left;background-color: rgb(255, 165, 165);">
                     <!-- <legend class="sectionTitle">
@@ -183,6 +189,13 @@
                 <gear-detail v-model="headGear"></gear-detail>
                 <gear-detail v-model="bodyGear"></gear-detail>
                 <gear-detail v-model="footGear"></gear-detail>
+
+                <fieldset class="gearFrame" style="height:fit-content;text-align:left;" v-if="showsGearPowerAmounts">
+                    <div v-for="(amount, id) in gearPowerAmounts" style="float:left;margin:5px;">
+                        <img v-bind:src="getGearPowerThumbPath(id)" class="circle" width="30">×{{amount}}
+                    </div>
+                </fieldset>
+
             </fieldset>
 
             <fieldset class="topSelection">
@@ -230,7 +243,7 @@
                 メイン:<br/>
                 <div style="padding:5px;">
                     <img v-bind:src="getGearPowerThumbPath(value.mainPower)" class="circle" width="30" style="vertical-align:middle" >
-                    <select2 :options="value.mainGearPowerOptions" v-model="value.mainPower" class="gearPowerSelect"></select2>
+                    <select2 :options="value.mainGearPowerOptions" v-model="value.mainPower" class="gearPowerSelect" @input="g_appData.updateGearPowerAmounts()" ></select2>
                 </div>
                 <div style="clear:both"></div>
                 <div style="padding:5px;">
@@ -238,17 +251,17 @@
                     <div style="clear:both">
                         <img v-bind:src="getGearPowerThumbPath(value.subPower1)" class="circle" width="30" style="vertical-align:middle" v-if="value.subPower1 != GearPowerId.None" >
                         <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
-                        <select2 :options="GearPowerOptions" v-model="value.subPower1" class="gearPowerSelect"></select2>
+                        <select2 :options="GearPowerOptions" v-model="value.subPower1" class="gearPowerSelect" @input="g_appData.updateGearPowerAmounts()"></select2>
                     </div>
                     <div style="clear:both">
                         <img v-bind:src="getGearPowerThumbPath(value.subPower2)" class="circle" width="30" style="vertical-align:middle" v-if="value.subPower2 != GearPowerId.None" >
                         <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
-                        <select2 :options="GearPowerOptions" v-model="value.subPower2" class="gearPowerSelect"></select2>
+                        <select2 :options="GearPowerOptions" v-model="value.subPower2" class="gearPowerSelect" @input="g_appData.updateGearPowerAmounts()"></select2>
                     </div>
                     <div style="clear:both">
                         <img v-bind:src="getGearPowerThumbPath(value.subPower3)" class="circle" width="30" style="vertical-align:middle" v-if="value.subPower3 != GearPowerId.None" >
                         <span class="emptySubGearPowerCircle" v-else style="width:28px;height:28px;vertical-align:middle"></span>
-                        <select2 :options="GearPowerOptions" v-model="value.subPower3" class="gearPowerSelect"></select2>
+                        <select2 :options="GearPowerOptions" v-model="value.subPower3" class="gearPowerSelect" @input="g_appData.updateGearPowerAmounts()"></select2>
                     </div>
                     <div style="clear:both; margin-top:10px;text-align:right;">
                         <input type="button" value="サブをクリア" @click="g_appData.clearSubGearPowers()" >
