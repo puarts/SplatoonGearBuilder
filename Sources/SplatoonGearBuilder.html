@@ -192,7 +192,7 @@
 
                 <fieldset class="gearFrame" style="height:fit-content;text-align:left;" v-if="showsGearPowerAmounts">
                     <div v-for="(amount, id) in gearPowerAmounts" style="float:left;margin:5px;">
-                        <img v-bind:src="getGearPowerThumbPath(id)" class="circle" width="30">×{{amount}}
+                        <img v-bind:src="getGearPowerThumbPath(id)" class="circle" width="30">×{{amount.toFixed(1)}}
                     </div>
                 </fieldset>
 
@@ -308,7 +308,7 @@
             if (!g_isLocal) {
                 jsRootPath = "/SplatoonGearBuilder/Sources/";
             }
-            let reloadSuffix = "20220924";
+            let reloadSuffix = "20221010";
             let scriptFileName = scriptFileNames[index];
             let src = jsRootPath + scriptFileName + "?" + reloadSuffix;
             const startTime = Date.now();
