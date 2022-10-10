@@ -188,9 +188,9 @@ function __getSubGearPowers() {
 }
 
 const SubGearPowers = __getSubGearPowers();
-const HeadMainGearPowers = HeadOnlyGearPowers.concat(SubGearPowers);
-const BodyMainGearPowers = BodyOnlyGearPowers.concat(SubGearPowers);
-const FootMainGearPowers = FootOnlyGearPowers.concat(SubGearPowers);
+const HeadMainGearPowers = SubGearPowers.concat(HeadOnlyGearPowers);
+const BodyMainGearPowers = SubGearPowers.concat(BodyOnlyGearPowers);
+const FootMainGearPowers = SubGearPowers.concat(FootOnlyGearPowers);
 
 const GearType = {
     Head: 0,
