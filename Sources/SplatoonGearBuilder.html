@@ -310,7 +310,7 @@
             if (!g_isLocal) {
                 jsRootPath = "/SplatoonGearBuilder/Sources/";
             }
-            let reloadSuffix = "20221010_2";
+            let reloadSuffix = "20221224_2";
             let scriptFileName = scriptFileNames[index];
             let src = jsRootPath + scriptFileName + "?" + reloadSuffix;
             const startTime = Date.now();
@@ -328,6 +328,7 @@
                 additionalScripts = [
                     "GlobalDefinitions_Debug.js",
                     "VueComponents.js",
+                    "SampleDataDefinitions.js",
                     "SplatoonGearBuilderMain.js",
                 ];
             }
