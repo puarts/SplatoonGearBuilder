@@ -265,9 +265,10 @@ class SplatoonGearBuilderMain {
         const powers = {}
         for (let gear of this.gears) {
             this.__addGearPower(powers, gear.mainPower, 1);
-            this.__addGearPower(powers, gear.subPower1, 0.3);
-            this.__addGearPower(powers, gear.subPower2, 0.3);
-            this.__addGearPower(powers, gear.subPower3, 0.3);
+            const subAmount = gear.mainPower == GearPowerId.Ability_Doubler ? 0.6 : 0.3;
+            this.__addGearPower(powers, gear.subPower1, subAmount);
+            this.__addGearPower(powers, gear.subPower2, subAmount);
+            this.__addGearPower(powers, gear.subPower3, subAmount);
         }
         return powers;
     }
