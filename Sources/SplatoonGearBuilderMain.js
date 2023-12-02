@@ -215,15 +215,23 @@ class Weapon {
 }
 
 class Gear {
-    constructor(id, mainGearPowerOptions, additionalStyle) {
+    constructor(id, mainGearPowerOptions, mainOnlyGearPowerIds, additionalStyle) {
         this.id = id;
         this.displayName = GearNames[id];
-        this.mainPower = GearPowerId.Ink_Saver_Main;
+        this.mainPower = GearPowerId.None;
         this.mainGearPowerOptions = mainGearPowerOptions;
         this.subPower1 = GearPowerId.None;
         this.subPower2 = GearPowerId.None;
         this.subPower3 = GearPowerId.None;
         this.additionalStyle = additionalStyle;
+
+        /** @type {Number[]} */
+        this.mainGearPalette = mainOnlyGearPowerIds;
+
+        this.mainGearDict = {};
+        for (const id of mainOnlyGearPowerIds) {
+            this.mainGearDict[id] = id;
+        }
     }
 
     clearSubPowers() {
@@ -231,14 +239,49 @@ class Gear {
         this.subPower2 = GearPowerId.None;
         this.subPower3 = GearPowerId.None;
     }
+    clearAllPowers() {
+        this.mainPower = GearPowerId.None;
+        this.clearSubPowers();
+    }
+
+    setPowerToEmptyPlace(gearPowerId) {
+        if (gearPowerId in this.mainGearDict) {
+            this.mainPower = gearPowerId;
+            return;
+        }
+
+        if (this.mainPower == GearPowerId.None) {
+            this.mainPower = gearPowerId;
+            return;
+        }
+        if (this.subPower1 == GearPowerId.None) {
+            this.subPower1 = gearPowerId;
+            return;
+        }
+        if (this.subPower2 == GearPowerId.None) {
+            this.subPower2 = gearPowerId;
+            return;
+        }
+        if (this.subPower3 == GearPowerId.None) {
+            this.subPower3 = gearPowerId;
+            return;
+        }
+    }
+}
+
+class GearPowerAmount {
+    constructor(id, amount) {
+        this.id = id;
+        this.amount = amount;
+    }
 }
 
 class SplatoonGearBuilderMain {
     constructor() {
         this.weapon = new Weapon();
-        this.headGear = new Gear(GearType.Head, HeadMainGearPowerOptions, "background-color:rgb(125, 168, 255)");
-        this.bodyGear = new Gear(GearType.Body, BodyMainGearPowerOptions, "background-color:rgb(120, 248, 225)");
-        this.footGear = new Gear(GearType.Foot, FootMainGearPowerOptions, "background-color:rgb(206, 174, 255)");
+        this.headGear = new Gear(GearType.Head, HeadMainGearPowerOptions, HeadOnlyGearPowers, "background-color:rgb(125, 168, 255)");
+        this.bodyGear = new Gear(GearType.Body, BodyMainGearPowerOptions, BodyOnlyGearPowers, "background-color:rgb(120, 248, 225)");
+        this.footGear = new Gear(GearType.Foot, FootMainGearPowerOptions, FootOnlyGearPowers, "background-color:rgb(206, 174, 255)");
 
         this.gears = [this.headGear, this.bodyGear, this.footGear];
         this.gearIdToGearDict = {};
@@ -247,18 +290,34 @@ class SplatoonGearBuilderMain {
         this.gearIdToGearDict[GearType.Foot] = this.footGear;
         this.currentGear = GearType.Head;
         this.showsGearPowerAmounts = false;
-        this.gearPowerAmounts = {};
+        this.gearPowerAmounts = [];
         this.updateGearPowerAmounts();
+
+        /** @type {Number[]} */
+        this.subGearPalette = SubGearPowers.slice(1);
+    }
+
+    setGearPowerForEmptyPower(gearPowerId) {
+        const currentGear = this.gearIdToGearDict[this.currentGear];
+        currentGear.setPowerToEmptyPlace(gearPowerId);
     }
 
     clearSubGearPowers() {
-        let gear = this.gearIdToGearDict[this.currentGear];
+        const gear = this.gearIdToGearDict[this.currentGear];
         gear.clearSubPowers();
     }
 
+    clearGearPowers() {
+        const gear = this.gearIdToGearDict[this.currentGear];
+        gear.clearAllPowers();
+    }
+
     updateGearPowerAmounts() {
-        this.gearPowerAmounts = this.calcGearPowerAmount();
-        console.log(this.gearPowerAmounts);
+        const powers = this.calcGearPowerAmount();
+        this.gearPowerAmounts = [];
+        for (const power in powers) {
+            this.gearPowerAmounts.push(new GearPowerAmount(power, powers[power]));
+        }
     }
 
     calcGearPowerAmount() {
@@ -299,5 +358,8 @@ const g_app = new Vue({
     el: "#app",
     data: g_appData,
     methods: {
+        gearPowerSelected: gearPowerId => {
+            g_appData.setGearPowerForEmptyPower(gearPowerId);
+        },
     }
 });
